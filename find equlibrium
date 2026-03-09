@@ -1,0 +1,34 @@
+import java.util.*;
+
+public class Main{
+    public static int findequ(int[] nums){
+        int n=nums.length;
+        int totalsum=0;
+        for(int v:nums){
+            totalsum+=v;
+            
+        }
+        int leftsum=0;
+        for(int i=0;i<n;i++){
+            int rightsum=totalsum-leftsum-nums[i];
+            
+            if(leftsum==rightsum){
+                return i;
+            }
+            leftsum+=nums[i];
+        }
+        return -1;
+        
+    }
+    public static void main(String args[]){
+        Scanner sc= new Scanner(System.in);
+        int n=sc.nextInt();
+        int[] nums=new int[n];
+        
+        for(int i=0;i<nums.length;i++){
+            nums[i]=sc.nextInt();
+            
+        }
+        System.out.print(findequ(nums));
+    }
+}
